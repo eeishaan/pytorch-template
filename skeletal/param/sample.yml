@@ -1,0 +1,9 @@
+optimizer_params:
+  lr: 0.0001
+optimizer: Adam
+criterion: CrossEntropyLoss
+cluster_params:
+  n_components: 17
+exp_file: model.pt
+epochs: 2000
+batch_size: 64

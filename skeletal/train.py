@@ -3,12 +3,8 @@ import argparse
 import datetime
 import os
 
-import numpy as np
-import torch
 import yaml
-from sklearn.model_selection import train_test_split
 from tensorboardX import SummaryWriter
-from torch.utils.data import DataLoader, SubsetRandomSampler
 
 from skeletal.constants import LOG_DIR, SAVED_MODEL_DIR
 from skeletal.factory.criterion import SimpleCriterFactory

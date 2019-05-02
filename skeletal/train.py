@@ -61,7 +61,7 @@ def train_model(model_name, params):
     # get model
     model = SimpleModelFactory.make_model(
         model_name, params.get('model_params', {}))
-    
+
     # get optimizer
     optim_parameters = params['optimizer_params']
     # add model params to optimizer arguments
@@ -73,7 +73,6 @@ def train_model(model_name, params):
     crit_parameters = params.get('criterion_params', {})
     criterion = SimpleCriterFactory.make_criter(
         params['criterion'], crit_parameters)
-
 
     # set up exp parameters
     experiment_name = params['experiment']

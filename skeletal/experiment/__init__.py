@@ -3,10 +3,8 @@
 from types import SimpleNamespace
 
 import torch
-import numpy as np
 
 from skeletal.cfg import DEVICE
-from skeletal.utils.score import compute_metrics
 
 
 class BaseExperiment(object):
@@ -40,8 +38,6 @@ class BaseExperiment(object):
 
         for k, v in params.items():
             setattr(self, k, v)
-
-
 
     def before_test(self, ctx):
         ctx.predictions = []

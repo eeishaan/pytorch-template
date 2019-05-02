@@ -4,7 +4,6 @@ Supported model index
 from torchvision.models import resnet18
 
 
-
 class SimpleModelFactory(object):
     MODELS = {
         'resnet': resnet18,
@@ -17,4 +16,3 @@ class SimpleModelFactory(object):
     @classmethod
     def supported_models(cls):
         return cls.MODELS.keys()
-

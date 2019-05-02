@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-import json
 
 import yaml
 
@@ -72,7 +71,6 @@ def test(args):
     with open(param_file) as fob:
         params = yaml.load(fob)
 
-
     # load data
     batch_size = params['batch_size']
     loader = get_loaders(data_dir, split=split, batch_size=batch_size)
@@ -81,7 +79,7 @@ def test(args):
             loader = loader[1]
         else:
             loader = loader[0]
-    
+
     # get model
     model = SimpleModelFactory.make_model(
         args.model, params.get('model_params', {}))
@@ -93,14 +91,15 @@ def test(args):
         "model": model,
     }
     experiment_params.update(params.get('exp_params', {}))
-    
+
     # get experiment object
     experiment = SimpleExperimentFactory.make_experiment(
         experiment_name, experiment_params)
     experiment.load_experiment()
     res = experiment.test(loader)
-    
+
     return res
+
 
 if __name__ == '__main__':
     parser = get_test_parser()

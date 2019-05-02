@@ -47,7 +47,7 @@ class BaseExperiment(object):
         ctx.predictions = []
 
     def before_test_forwardp(self, ctx, data):
-    return data
+        return data
 
     def after_test_forwardp(self, ctx, outputs):
         pass
@@ -139,7 +139,7 @@ class BaseExperiment(object):
             if not is_continue:
                 break
 
-    def load_experiment(self, load_embedding=True, load_cluster=True):
+    def load_experiment(self):
         checkpoint = torch.load(self._experiment_file)
         self._model_obj.load_state_dict(
             checkpoint['model_state_dict'])

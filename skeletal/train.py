@@ -15,7 +15,6 @@ from skeletal.factory.criterion import SimpleCriterFactory
 from skeletal.factory.experiment import SimpleExperimentFactory
 from skeletal.factory.model import SimpleModelFactory
 from skeletal.factory.optimizer import SimpleOptimFactory
-from skeletal.utils import get_param_file
 from skeletal.utils.data import get_loaders
 
 
@@ -31,7 +30,7 @@ def get_train_parser(parent=None):
     parser.add_argument(
         '--model',
         type=str,
-        help='Model to train',
+        help='Name of model to train',
         choices=SimpleModelFactory.supported_models(),
         required=True,
     )
@@ -40,7 +39,8 @@ def get_train_parser(parent=None):
         '--params',
         type=str,
         help='Param file location. '
-        'For information about param file format refer README.md'
+        'For information about param file format refer README.md',
+        required=True,
     )
 
     return parser
@@ -98,11 +98,7 @@ def train_model(model_name, params):
 
 
 def train(args):
-    param_file = get_param_file(args.embedding, args.cluster)
-    if args.params:
-        param_file = args.params
-    if param_file is None:
-        exit(1)
+    param_file = args.params
 
     # load exp parameters
     with open(param_file) as fob:

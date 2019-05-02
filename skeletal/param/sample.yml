@@ -4,6 +4,7 @@ optimizer: Adam
 criterion: CrossEntropyLoss
 cluster_params:
   n_components: 17
-exp_file: model.pt
+experiment: BaseExperiment
+exp_name: sample
 epochs: 2000
 batch_size: 64

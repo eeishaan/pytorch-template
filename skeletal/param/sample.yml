@@ -1,10 +1,23 @@
+# You can use any optimizer class that is part of torch.nn module.
+# Make sure to write the class name as is 
+optimizer: Adam
 optimizer_params:
   lr: 0.0001
-optimizer: Adam
+# You can use any criterion class that is part of torch.nn module.
 criterion: CrossEntropyLoss
-cluster_params:
-  n_components: 17
+# Uncomment to add criterion parameters
+# criterion_params: 
+#   param1: val1
+# 
+# Specify which experiment class to use.
 experiment: BaseExperiment
-exp_name: sample
+# Uncomment to add experiment parameters
+# exp_params:
+#   param1: val1
+# 
+# Name of the experiment. Used to create model directory.
+exp_name: resnet_cifar
+# Maximum number of epochs
 epochs: 2000
+# Mini-batch size
 batch_size: 64

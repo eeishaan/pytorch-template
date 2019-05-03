@@ -19,7 +19,6 @@ class BaseExperiment(object):
             summary_writer=None,
             optimizer=None,
             criterion=None,
-            patience=10,
             **params
     ):
         self._experiment_file = experiment_dir / 'model.pt'
@@ -27,7 +26,6 @@ class BaseExperiment(object):
         self._optimizer = optimizer
         self._criterion = criterion
         self._summary_writer = summary_writer
-        self._patience = patience
         # send model to device
         self._model_obj.to(DEVICE)
         if summary_writer is not None:

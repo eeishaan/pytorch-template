@@ -1,0 +1,8 @@
+language: python
+dist: xenial
+python:
+  - 3.6
+install:
+  - pip install -q flake8==3.7.6
+script:
+  - flake8 skeletal

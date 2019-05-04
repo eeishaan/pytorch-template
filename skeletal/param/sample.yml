@@ -25,7 +25,7 @@ criterion: CrossEntropyLoss
 #   param1: val1
 # 
 # Specify which experiment class to use.
-experiment: BaseExperiment
+experiment: CifarExperiment
 # Uncomment to add experiment parameters
 # exp_params:
 #   param1: val1

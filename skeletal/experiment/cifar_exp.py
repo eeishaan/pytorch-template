@@ -12,24 +12,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>
 
-
+from skeletal.cfg import DEVICE
 from skeletal.experiment import BaseExperiment
-from skeletal.experiment.cifar_exp import CifarExperiment
 
 
-class SimpleExperimentFactory(object):
-    SUPPORTED_EXP = {
-        'BaseExperiment': BaseExperiment,
-        'CifarExperiment': CifarExperiment,
-    }
+class CifarExperiment(BaseExperiment):
+    def before_train_forwardp(self, ctx, data):
+        ctx.labels = data[1].to(DEVICE)
+        return data[0]
 
-    @classmethod
-    def supported_experiments(cls):
-        return cls.SUPPORTED_EXP.keys()
-
-    @classmethod
-    def make_experiment(cls, exp_name, params):
-        """
-        Embedding name has one-to-one map with experiment name
-        """
-        return cls.SUPPORTED_EXP[exp_name](**params)
+    def compute_loss(self, ctx, outputs, labels):
+        return self._criterion(outputs, ctx.labels)

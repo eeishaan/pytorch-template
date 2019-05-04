@@ -78,7 +78,7 @@ class BaseExperiment(object):
         epoch = ctx.epoch
 
         # save embedding model after 10 epochs
-        if epoch % 10 != 9:
+        if epoch % 10 == 9:
             self.save_experiment(ctx)
 
         # print loss
@@ -123,10 +123,10 @@ class BaseExperiment(object):
             self.before_train_epoch(ctx, train_loader)
             for batch, data in enumerate(train_loader):
                 ctx.batch = batch
-                data = data.to(DEVICE)
 
                 # before_forwardp can add second layer of transformation
                 data = self.before_train_forwardp(ctx, data)
+                data = data.to(DEVICE)
 
                 # zero out previous gradient
                 self._model_obj.zero_grad()

@@ -16,12 +16,12 @@
 '''
 Supported model index
 '''
-from torchvision.models import resnet18
+from skeletal.model.cnn import CnnModel
 
 
 class SimpleModelFactory(object):
     MODELS = {
-        'resnet': resnet18,
+        'cnn': CnnModel
     }
 
     @classmethod

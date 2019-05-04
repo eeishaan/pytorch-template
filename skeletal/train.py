@@ -60,7 +60,8 @@ def get_train_parser(parent=None):
 def train_model(model_name, params):
 
     # create experiment directory
-    exp_dir = SAVED_MODEL_DIR / params['exp_name'] / datetime.datetime.now()
+    exp_dir = SAVED_MODEL_DIR / \
+        params['exp_name'] / str(datetime.datetime.now())
     os.makedirs(exp_dir, exist_ok=True)
 
     # make summary writer
@@ -93,7 +94,7 @@ def train_model(model_name, params):
     experiment_name = params['experiment']
     experiment_params = {
         "experiment_dir": exp_dir,
-        "model": model,
+        "model_obj": model,
         "optimizer": optimizer,
         "criterion": criterion,
         "summary_writer": writer,
@@ -115,7 +116,7 @@ def train(args):
         params = yaml.load(fob)
 
     # train model
-    train_model(args.model_name, params)
+    train_model(args.model, params)
 
 
 if __name__ == '__main__':

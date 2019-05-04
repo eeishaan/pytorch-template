@@ -23,5 +23,5 @@ Light weight experiment framework for quick prototyping in pytorch.
 - Once the above steps are done, you need to construct the training command.
 - Example command that works out of box
     ```
-    python3 -m skeletal train --model resnet --params skeletal/param/sample.yml
+    python3 -m skeletal train --model cnn --params skeletal/param/sample.yml
     ```
